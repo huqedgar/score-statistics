@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thống kê điểm</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h1 class="title">THỐNG KÊ ĐIỂM MÔN TIẾNG ANH TRƯỜNG THCS NHƠN HỘI</h1>
+
+    <!-- Cấu hình -->
+    <div class="config-section" id="configSection" style="display: none">
+      <div class="config-header">
+        <h3 style="margin: 0">Cấu hình khoảng điểm</h3>
+        <div class="config-actions">
+          <button class="btn-add" onclick="applyConfig()">Áp dụng</button>
+        </div>
+      </div>
+
+      <div class="config-grid">
+        <div class="range-column">
+          <h4>Điểm dưới trung bình</h4>
+          <div id="belowRanges" class="range-inputs"></div>
+          <div class="add-range-options">
+            <button class="btn-add-range" onclick="addRange(false, 'range')">
+              + Thêm khoảng điểm
+            </button>
+            <button class="btn-add-range" onclick="addRange(false, 'single')">
+              + Thêm một điểm
+            </button>
+          </div>
+        </div>
+
+        <div class="range-column">
+          <h4>Điểm trên trung bình</h4>
+          <div id="aboveRanges" class="range-inputs"></div>
+          <div class="add-range-options">
+            <button class="btn-add-range" onclick="addRange(true, 'range')">
+              + Thêm khoảng điểm
+            </button>
+            <button class="btn-add-range" onclick="addRange(true, 'single')">
+              + Thêm một điểm
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Màn hình chính -->
+    <div class="input-container">
+      <input
+        type="number"
+        id="scoreInput"
+        step="0.1"
+        min="0"
+        max="10"
+        placeholder="Nhập điểm (0-10)"
+      />
+      <button class="btn-toggle" onclick="toggleHistory()">Ẩn/Hiện</button>
+      <button
+        class="btn-undo"
+        onclick="undoLastScore()"
+        id="undoButton"
+        disabled
+      >
+        Hoàn tác
+      </button>
+      <button class="btn-clear" onclick="clearAll()">Xóa tất cả</button>
+      <button class="btn-config" onclick="toggleConfig()">Cấu hình</button>
+    </div>
+
+    <div class="history-section">
+      <div class="history-header">
+        <h2>Lịch sử nhập điểm</h2>
+        <div style="display: flex; gap: 10px; align-items: center">
+          <span id="historyCount">(0 điểm)</span>
+        </div>
+      </div>
+      <div class="history-list hidden" id="historyList">
+        <!-- Lịch sử sẽ được thêm ở đây -->
+      </div>
+    </div>
+
+    <div class="tables-container">
+      <div>
+        <h2>Điểm dưới trung bình</h2>
+        <table id="belowAverageTable">
+          <thead>
+            <tr>
+              <th>Khoảng điểm</th>
+              <th>Số lượng</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <div>
+        <h2>Điểm trên trung bình</h2>
+        <table id="aboveAverageTable">
+          <thead>
+            <tr>
+              <th>Khoảng điểm</th>
+              <th>Số lượng</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
