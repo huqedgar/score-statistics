@@ -61,9 +61,16 @@ button:disabled {
 }
 
 .btn-toggle {
-  background-color: #4caf50;
+  background-color: #2196f3;
 }
 .btn-toggle:hover {
+  background-color: #1e88e5;
+}
+
+.btn-add {
+  background-color: #4caf50;
+}
+.btn-add:hover {
   background-color: #45a049;
 }
 
